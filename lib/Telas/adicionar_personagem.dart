@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 //import 'package:provider/provider.dart';
 import 'package:tcc_app/Telas/atributos.dart';
 import 'package:tcc_app/Telas/selecionarItem.dart';
+import 'package:tcc_app/repositorio/Classe_repositorio.dart';
+import 'package:tcc_app/repositorio/Raca_repositorio.dart';
 //import 'package:tcc_app/repositorio/personagem_repositorio.dart';
 import 'package:tcc_app/wigtes/AdicionarItem.dart';
 import 'package:tcc_app/wigtes/radioGroup.dart';
@@ -18,7 +20,11 @@ class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
 
   Map<String, int?>? atributos;
 
-  void _entrarNaPaginaDeRaca(BuildContext context) => Navigator.push(context,MaterialPageRoute(builder: (context) => const Selecionaritem()),);
+  final RacaRepo = RacaRepositorio();
+  final ClasseRepo = ClasseRepositorio();
+
+  void _entrarNaPaginaDeRaca(BuildContext context) => Navigator.push(context,MaterialPageRoute(builder: (context) => Selecionaritem(repo: RacaRepo, tipo: 'raca')),);
+  void _entrarNaPaginaDeClasse(BuildContext context) => Navigator.push(context,MaterialPageRoute(builder: (context) => Selecionaritem(repo: ClasseRepo, tipo: 'classe')),);
 
    Future<void> _entrarNaPaginaDeAtributos(BuildContext context) async {
     final Map<String, int?>? result = await Navigator.push<Map<String, int?>>(
@@ -34,7 +40,7 @@ class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
   Map<String, VoidCallback> lista(BuildContext context) => {
     "Atributos": () => _entrarNaPaginaDeAtributos(context),
     "Raça": () => _entrarNaPaginaDeRaca(context),
-    "Classe": () => _entrarNaPaginaDeRaca(context),
+    "Classe": () => _entrarNaPaginaDeClasse(context),
     "Equipamentos": () => _entrarNaPaginaDeRaca(context),
     "Habilidades": () => _entrarNaPaginaDeRaca(context),
   };

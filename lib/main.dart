@@ -3,8 +3,9 @@ import 'package:tcc_app/Telas/personagens.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc_app/Telas/campanhas.dart';
 import 'package:tcc_app/Telas/adicionar_personagem.dart';
+import 'package:tcc_app/repositorio/Classe_repositorio.dart';
 import 'package:tcc_app/wigtes/bottomNavigationBar.dart';
-import 'package:tcc_app/repositorio/personagem_repositorio.dart';
+import 'package:tcc_app/repositorio/Raca_repositorio.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
@@ -13,7 +14,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => PersonagemRepositorio()),
+        ChangeNotifierProvider(create: (_) => RacaRepositorio()),
+        ChangeNotifierProvider(create: (_) => ClasseRepositorio()),
       ],
       child: const MainApp(),
     ),

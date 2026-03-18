@@ -47,11 +47,11 @@ class _AtributosState extends State<Atributos> {
     _random();
   }
 
-  // Gera 6 números aleatórios de 1 a 6
+  // Gera 4 números aleatórios de 1 a 4
   void _random() {
     pool.clear();
     for (int i = 0; i < 6; i++) {
-      pool.add(random.nextInt(6) + 1); // 1..6
+      pool.add(random.nextInt(4) + 1);
     }
   }
 

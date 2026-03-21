@@ -51,7 +51,7 @@ class _AtributosState extends State<Atributos> {
   void _random() {
     pool.clear();
     for (int i = 0; i < 6; i++) {
-      pool.add(random.nextInt(4) + 1);
+      pool.add((random.nextInt(6) + 1)-2);
     }
   }
 

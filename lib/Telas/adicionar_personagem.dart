@@ -37,14 +37,15 @@ class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
     });
   }
 
-  Map<String, VoidCallback> lista(BuildContext context) => {
-    "Atributos": () => _entrarNaPaginaDeAtributos(context),
-    "Raça": () => _entrarNaPaginaDeRaca(context),
-    "Classe": () => _entrarNaPaginaDeClasse(context),
-    "Equipamentos": () => _entrarNaPaginaDeRaca(context),
-    "Habilidades": () => _entrarNaPaginaDeRaca(context),
+Map<String, Map<VoidCallback, dynamic>> lista(BuildContext context) {
+  return {
+    "Atributos": {() => _entrarNaPaginaDeAtributos(context): atributos,},
+    "Raça": {() => _entrarNaPaginaDeRaca(context): atributos},
+    "Classe": {() => _entrarNaPaginaDeClasse(context): atributos},
+    "Nivel": {() => _entrarNaPaginaDeRaca(context):atributos},
+    "Antecedente": {() => _entrarNaPaginaDeRaca(context):atributos},
   };
-
+}
   @override
   Widget build(BuildContext context) {
     //final personagem = context.watch<PersonagemRepositorio>();
@@ -58,7 +59,7 @@ class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
           controller: _scrollController,
           children: [
             for (var item in itens.entries) ...[
-              Adicionaritem(onTap: item.value, titulo: item.key),
+              Adicionaritem(onTap: item.value.keys.first, titulo: item.key),
               const SizedBox(height: 10),
             ],
             Radiogroup(

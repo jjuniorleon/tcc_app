@@ -18,7 +18,7 @@ class AdicionarPersonagem extends StatefulWidget {
 class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
   final ScrollController _scrollController = ScrollController();
 
-  Map<String, int?>? atributos;
+  Map<String, int?>? atributos = null;
 
   final RacaRepo = RacaRepositorio();
   final ClasseRepo = ClasseRepositorio();
@@ -37,13 +37,15 @@ class _AdicionarPersonagemState extends State<AdicionarPersonagem> {
     });
   }
 
+int ?teste;
+
 Map<String, Map<VoidCallback, dynamic>> lista(BuildContext context) {
   return {
     "Atributos": {() => _entrarNaPaginaDeAtributos(context): atributos,},
-    "Raça": {() => _entrarNaPaginaDeRaca(context): atributos},
-    "Classe": {() => _entrarNaPaginaDeClasse(context): atributos},
-    "Nivel": {() => _entrarNaPaginaDeRaca(context):atributos},
-    "Antecedente": {() => _entrarNaPaginaDeRaca(context):atributos},
+    "Raça": {() => _entrarNaPaginaDeRaca(context): teste},
+    "Classe": {() => _entrarNaPaginaDeClasse(context): teste},
+    "Nivel": {() => _entrarNaPaginaDeRaca(context):teste},
+    "Antecedente": {() => _entrarNaPaginaDeRaca(context):teste},
   };
 }
   @override
@@ -59,7 +61,8 @@ Map<String, Map<VoidCallback, dynamic>> lista(BuildContext context) {
           controller: _scrollController,
           children: [
             for (var item in itens.entries) ...[
-              Adicionaritem(onTap: item.value.keys.first, titulo: item.key),
+              
+              Adicionaritem(onTap: item.value.keys.first, titulo: item.key, v:item.value.values.first),
               const SizedBox(height: 10),
             ],
             Radiogroup(

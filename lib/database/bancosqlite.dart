@@ -44,6 +44,7 @@ class BancoSQLite {
     batch.execute(_magias);
     batch.execute(_personagem_magias);
     batch.execute(_ataques);
+    batch.execute(_antecedente);
 
     await batch.commit();
 
@@ -112,6 +113,15 @@ class BancoSQLite {
       'pericia_id': pericia2,
       'mod_total': 6,
       'treinado': 1,
+    });
+
+    await db.insert('antecedentes', {
+      'nome': 'guarda',
+      'pericias': 'guerra',
+      'idiomas': 'comum', 
+      'feramentas': 'espadinha',
+      'ouro': 1,
+      'descricao': 'guardinha foda'
     });
   }
 
@@ -274,6 +284,18 @@ class BancoSQLite {
       alcance TEXT,
       observacao TEXT,
       FOREIGN KEY (personagem_id) REFERENCES personagens(id) ON DELETE CASCADE
+    )
+  ''';
+
+  String get _antecedente => '''
+    CREATE TABLE antecedente (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome TEXT NOT NULL,
+      pericias INTEGER,
+      idiomas TEXT,
+      feramentas TEXT,
+      ouro int,
+      descricao TEXT
     )
   ''';
 }

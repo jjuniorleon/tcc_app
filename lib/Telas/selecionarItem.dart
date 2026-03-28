@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_app/modelos/raca.dart';
 import 'package:tcc_app/wigtes/Mostrar_banco.dart';
+import 'package:tcc_app/wigtes/nivel.dart';
 
 class Selecionaritem extends StatelessWidget {
   Selecionaritem({Key? key, required this.repo, required this.tipo})
@@ -58,6 +59,8 @@ class _MB extends StatelessWidget {
         return MostrarBanco(bdR: repo);
       case 'classe':
         return MostrarBanco(bdC: repo);
+      case 'nivel':
+        return Nivel();
       default:
         return const Center(child: Text('Tipo inválido'));
     }

@@ -24,7 +24,6 @@ class Atributoadd extends StatefulWidget {
 
 class _AtributoaddState extends State<Atributoadd> {
   late int _valor;
-
   @override
   void initState() {
     super.initState();
